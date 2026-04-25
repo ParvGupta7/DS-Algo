@@ -100,10 +100,8 @@ def merge_sorted_arrays(left,right):
 
 
 
-left= [4]
-right = [3]
 
-print(merge_sorted_arrays(left,right))
+#print(merge_sorted_arrays(left,right))
 
 
 '''
@@ -115,20 +113,25 @@ So we can say if len(arr)<=1, then it is already sorted. It could be empty too [
 def merge_sort(arr):
     if len(arr)<=1:
         return arr  # Base case
-    mid = len(arr//2) # floor
+    mid = len(arr)//2 # floor
 
-    left_arr = nums[:mid] # In slicing, when we dont specify the start parameter, python defaults to 0, so we can also write this as nums[0:mid]
+    left_half = arr[:mid] # In slicing, when we dont specify the start parameter, python defaults to 0, so we can also write this as nums[0:mid]
 
-    right_arr = nums[mid:] # Similarly here we can also write it as nums[mid:len(nums)]
+    right_half = arr[mid:] # Similarly here we can also write it as nums[mid:len(nums)]
 
-    left = merge_sort(left_arr)
-    right = merge_sort(right_arr)
+    left = merge_sort(left_half)
+    right = merge_sort(right_half)
 
     return merge_sorted_arrays(left,right)
 
 
+print(merge_sort(nums))
+
+# Time complexity: O(N log N) for all best, avg, and worst case.
+# The algorithm recursively divides the list in half until you reach sub-lists of size 1.
+# Then you perform O(n) operations to merge the elements.... Hence O(N log N)
+# Space complexity: O(N)
 
 
 
 
-    
